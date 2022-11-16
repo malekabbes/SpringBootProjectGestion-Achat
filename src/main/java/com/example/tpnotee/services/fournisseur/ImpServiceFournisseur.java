@@ -9,6 +9,8 @@ import com.example.tpnotee.generic.ImplementationGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 
 @Service
 public class ImpServiceFournisseur extends ImplementationGeneric<Fournisseur,Long> implements InterfaceFournisseur {
@@ -23,7 +25,8 @@ public class ImpServiceFournisseur extends ImplementationGeneric<Fournisseur,Lon
             Fournisseur fournisseur=repo.findById(fournisseurId).orElse(null);
             SecteurActivite secteurActivite=secteurrepo.findById(secteurActiviteId).orElse(null);
             if(fournisseur!=null && secteurActivite!=null){
-                fournisseur.setSecteurActivite;
+                fournisseur.setSecteurActivite(Collections.singleton(secteurActivite));
+                repo.save(fournisseur);
             }
         } catch (Exception err) {
             throw new RuntimeException(err);

@@ -4,6 +4,8 @@ import com.example.tpnotee.entities.Facture;
 import com.example.tpnotee.entities.Operateur;
 import com.example.tpnotee.generic.Igeneric;
 
-public interface InterfaceFacture extends Igeneric<Facture,Long> {
+import java.util.List;
 
+public interface InterfaceFacture extends Igeneric<Facture,Long> {
+    List<Facture> getFacturesByFournisseur(Long idFournisseur);
 }
