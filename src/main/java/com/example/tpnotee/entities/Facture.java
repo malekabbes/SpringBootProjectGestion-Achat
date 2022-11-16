@@ -19,20 +19,20 @@ public class Facture
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long idFacture;
-    public float montantRemise;
-    public float montantFacture;
+    private Long idFacture;
+    private float montantRemise;
+    private float montantFacture;
     @Temporal(TemporalType.DATE)
-    public Date dateCreationFacture ;
+    private Date dateCreationFacture ;
     @Temporal(TemporalType.DATE)
-    public Date dateDerniereModification;
-    public boolean archivee;
+    private Date dateDerniereModification;
+    private boolean archivee;
     @OneToMany(mappedBy = "facture")
-    public Set<Reglement> reglements;
+    private Set<Reglement> reglements;
     @OneToMany(mappedBy = "facture")
-    public Set<DetailFacture> detailfacture;
+    private Set<DetailFacture> detailfacture;
     @ManyToOne(cascade =CascadeType.PERSIST)
     @JsonIgnore
-    public Fournisseur fournisseur;
+    private Fournisseur fournisseur;
 
 }

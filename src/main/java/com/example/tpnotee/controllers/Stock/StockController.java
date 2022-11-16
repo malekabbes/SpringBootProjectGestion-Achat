@@ -39,7 +39,7 @@ public class StockController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-    public String UpdateContrat(@RequestBody Stock s,@PathVariable Long id) {
+    public String UpdateStock(@RequestBody Stock s,@PathVariable Long id) {
         try {
             Stock updateStock= service.retrieveStock(id);
             if (updateStock==null){
