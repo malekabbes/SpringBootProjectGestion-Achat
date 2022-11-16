@@ -1,5 +1,6 @@
 package com.example.tpnotee.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,9 @@ public class DetailFacture {
     public int pourcentageRemise;
     public float montantRemise;
     @ManyToOne(cascade =CascadeType.PERSIST)
+    @JsonIgnore
     public Facture facture;
     @ManyToOne
+    @JsonIgnore
     public Produit produit;
 }

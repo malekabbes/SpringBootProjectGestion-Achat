@@ -5,5 +5,5 @@ import com.example.tpnotee.entities.Operateur;
 import com.example.tpnotee.generic.Igeneric;
 
 public interface InterfaceFournisseur extends Igeneric<Fournisseur,Long> {
-
+    public void assignSecteurActiviteToFournisseur(Long fournisseurId, Long secteurActiviteId) ;
 }

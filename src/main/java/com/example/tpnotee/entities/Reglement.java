@@ -1,5 +1,6 @@
 package com.example.tpnotee.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,6 @@ public class Reglement
     private Date Date;
 
     @ManyToOne(cascade =CascadeType.PERSIST)
+    @JsonIgnore
     private Facture facture;
 }
