@@ -9,6 +9,8 @@ import com.example.tpnotee.services.facture.ImpServiceFacture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/facture")
 public class FactureController extends ControllerGeneric<Facture,Long> {
@@ -36,4 +38,14 @@ public class FactureController extends ControllerGeneric<Facture,Long> {
         }
         return "Facture modifié ";
     }
+    @RequestMapping(value = "/facturebyfournisseur", method = RequestMethod.GET)
+    public List<Facture> findFactureByFournisseur(@PathVariable Long id) {
+        try {
+            return service.getFacturesByFournisseur(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

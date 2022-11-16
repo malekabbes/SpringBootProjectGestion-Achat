@@ -56,5 +56,17 @@ public class StockController {
         }
         return "Stock modifié ";
     }
+    @RequestMapping(value = "/assignproduittostock/{id}/{idstock}", method = RequestMethod.PUT)
+    public String assignProduitToStock(@PathVariable Long id,@PathVariable Long idstock){
+        try{
+            service.assignProduitToStock(id,idstock);
+            if (service.produitexists){
+                return "Produit already exists in this stock";
+            }
+        }catch(Exception err){
+            throw new RuntimeException(err);
+        }
+        return "Produit assigned to stock";
+    }
 
 }

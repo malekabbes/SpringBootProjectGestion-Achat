@@ -20,6 +20,8 @@ public class ImpServiceStock implements InterfaceStock {
     @Autowired
     GenericRepo<Produit,Long> prodrepo;
 
+    public boolean produitexists=false;
+
 
     @Override
     public List<Stock> retrieveAllStocks() {
@@ -77,8 +79,13 @@ public class ImpServiceStock implements InterfaceStock {
         Produit produit = prodrepo.findById(idProduit).orElse(null);
         Stock stock = repo.findById(idStock).orElse(null);
         if (produit != null && stock != null) {
-            stock.setProduits(Collections.singleton(produit));
-            repo.save(stock);
+            if (!repo.findStockByProduits(idProduit).equals(produit)){
+                stock.setProduits(Collections.singleton(produit));
+                repo.save(stock);
+            }else{
+                produitexists=true;
+            }
+
         } else {
             System.out.println("NULL FOUND");
         }
