@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/produit")
+@RequestMapping(value = "/reglement")
 public class ReglementController extends ControllerGeneric<Reglement,Long> {
     @Autowired
     private ImpServiceReglement service;

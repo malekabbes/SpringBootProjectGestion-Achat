@@ -9,7 +9,7 @@ import com.example.tpnotee.generic.ImplementationGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+@Service
 public class ImpServiceOperateur extends ImplementationGeneric<Operateur,Long> implements InterfaceOperateur {
     @Autowired
     GenericRepo<Operateur,Long> repo;

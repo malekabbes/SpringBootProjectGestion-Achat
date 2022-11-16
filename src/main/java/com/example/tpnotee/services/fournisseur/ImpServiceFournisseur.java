@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class ImpServiceFournisseur extends ImplementationGeneric<Fournisseur,Long> implements InterfaceFournisseur {
     @Autowired
     GenericRepo<Fournisseur,Long> repo;

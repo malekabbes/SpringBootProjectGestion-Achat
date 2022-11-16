@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/facture")
+@RequestMapping(value = "/operateur")
 public class OperateurController extends ControllerGeneric<Operateur,Long> {
     @Autowired
     private ImpServiceOperateur service;
