@@ -3,12 +3,10 @@ package com.example.tpnotee.generic;
 import com.example.tpnotee.entities.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 public class ControllerGeneric<T,ID> {
     @Autowired
     private ImplementationGeneric<T,ID> service;
@@ -29,13 +27,13 @@ public class ControllerGeneric<T,ID> {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String deleteStock(@PathVariable ID id) {
+    public void deleteStock(@PathVariable ID id) {
         try {
             service.delete(id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "Supprimé";
+
     }
 
 

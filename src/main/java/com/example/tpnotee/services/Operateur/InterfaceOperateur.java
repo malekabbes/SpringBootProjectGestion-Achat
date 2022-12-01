@@ -5,5 +5,6 @@ import com.example.tpnotee.entities.Reglement;
 import com.example.tpnotee.generic.Igeneric;
 
 public interface InterfaceOperateur extends Igeneric<Operateur,Long> {
+    public void assignOperateurToFacture(Long idOperateur, Long idFacture) throws Exception;
 
 }

@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface InterfaceFacture extends Igeneric<Facture,Long> {
     List<Facture> getFacturesByFournisseur(Long idFournisseur);
+    Facture addFacture(Facture f, Long idFournisseur) throws Exception;
 }

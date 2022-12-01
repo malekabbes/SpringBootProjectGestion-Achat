@@ -41,4 +41,10 @@ public class ProduitController extends ControllerGeneric<Produit,Long> {
         return "Produit modifié";
     }
 
+    @GetMapping("/{idProduit}/{idStock}")
+    public Produit addProduitToStock(@PathVariable(value = "idProduit") long idProduit, @PathVariable(value = "idStock") long idStock) throws Exception{
+        service.assignProduitToStock(idProduit, idStock);
+        return service.retrieve(idProduit);
+    }
+
 }
