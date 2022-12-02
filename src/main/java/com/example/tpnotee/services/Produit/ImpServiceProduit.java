@@ -14,10 +14,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImpServiceProduit extends ImplementationGeneric<Produit,Long> implements InterfaceProduit {
     @Autowired
-    GenericRepo<Produit,Long> repo;
-    @Autowired
-    GenericRepo<Stock,Long> srepo;
-    @Autowired
     ImpServiceStock stockServiceImp;
 
     @Override

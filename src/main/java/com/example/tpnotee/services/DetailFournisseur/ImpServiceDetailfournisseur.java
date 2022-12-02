@@ -7,7 +7,7 @@ import com.example.tpnotee.generic.ImplementationGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+@Service
 public class ImpServiceDetailfournisseur extends ImplementationGeneric<DetailFournisseur,Long> implements InterfaceDetailFournisseur {
     @Autowired
     GenericRepo<DetailFournisseur,Long> repo;

@@ -9,17 +9,17 @@ import java.util.List;
 
 public class ControllerGeneric<T,ID> {
     @Autowired
-    private ImplementationGeneric<T,ID> service;
+    private ImplementationGeneric<T,ID> serviceG;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
         public T save(@RequestBody T t) throws Exception {
-        T Response = (T) service.save(t);
+        T Response = (T) serviceG.save(t);
         return Response;
     }
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<T> RetrieveAll() {
         try {
-            return service.repo.findAll();
+            return serviceG.repo.findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,7 +29,7 @@ public class ControllerGeneric<T,ID> {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteStock(@PathVariable ID id) {
         try {
-            service.delete(id);
+            serviceG.delete(id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

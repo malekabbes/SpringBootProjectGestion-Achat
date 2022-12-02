@@ -68,5 +68,10 @@ public class StockController {
         }
         return "Produit assigned to stock";
     }
+    @RequestMapping(value="/checkstore",method=RequestMethod.GET)
+    public void retrieveStatusStock() throws Exception {
+        service.retrieveStatusStock();
+
+    }
 
 }

@@ -5,15 +5,16 @@ import com.example.tpnotee.entities.Produit;
 import com.example.tpnotee.entities.Stock;
 import com.example.tpnotee.generic.GenericRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 @Service
-
 public class ImpServiceStock implements InterfaceStock {
     @Autowired
     StockRepository repo;
@@ -90,4 +91,43 @@ public class ImpServiceStock implements InterfaceStock {
             System.out.println("NULL FOUND");
         }
     }
+
+    //    ┌───────────── second (0-59)
+// │ ┌───────────── minute (0 - 59)
+//│ │ ┌───────────── hour (0 - 23)
+//│ │ │ ┌───────────── day of the month (1 - 31)
+// │ │ │ │ ┌───────────── month (1 - 12) (or JAN-DEC)
+//            │ │ │ │ │ ┌───────────── day of the week (0 - 7)
+// │ │ │ │ │ │          (or MON-SUN -- 0 or 7 is Sunday)     │ │ │ │ │ │
+// * * * * * *
+    @Scheduled(cron = "0 0 22 * * *", zone = "UTC+1")
+    public void retrieveStatusStock() throws Exception {
+        List<Stock> list=repo.findAll();
+        List<String> liststockexpire=new ArrayList<>();
+        String Stockdata = "" ;
+        String stocktoreview = "";
+
+        for (Stock s:list) {
+            Stockdata = "\n Stock [ " + "\n"
+                    + " idStock :" + s.getIdStock() +
+                    " \n" +
+                    " libelleStock : " + s.getLibelleStock() +
+                    " \n" + " qte : " + s.getQte() + " " +
+                    " \n qteMin " + s.getQteMin() + " \n] ";
+            try {
+
+                if (s.getQte() < s.getQteMin()) {
+                    liststockexpire.add(Stockdata);
+                    stocktoreview = stocktoreview.concat("List de Stock expirés" + liststockexpire.toString());
+
+                }
+            } catch (NullPointerException e) {
+                e.getCause();
+
+            }
+        }
+        Thread.sleep(2000);
+        System.out.println(stocktoreview);
+    }
 }
+

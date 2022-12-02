@@ -20,7 +20,7 @@ import java.util.Set;
 public class ImpServiceReglement extends ImplementationGeneric<Reglement,Long> implements InterfaceReglement {
     @Autowired
     ReglementRepository repo;
-
+    @Autowired
     ImpServiceFacture factureServiceImp;
 
     @Override
