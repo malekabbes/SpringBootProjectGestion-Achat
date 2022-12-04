@@ -23,27 +23,7 @@ public class FactureController extends ControllerGeneric<Facture,Long> {
 
         return service.addFacture(facture, idFournisseur);
     }
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-    public String UpdateFacture(@RequestBody Facture f, @PathVariable Long id) {
-        try {
-            Facture updatefacture= service.retrieve(id);
-            if (updatefacture==null){
-                return "Facture not found with id :";
-            }
-            updatefacture.setMontantFacture(f.getMontantFacture());
-            updatefacture.setArchivee(f.isArchivee());
-            updatefacture.setMontantRemise(f.getMontantRemise());
-            updatefacture.setDateCreationFacture(f.getDateCreationFacture());
-            updatefacture.setDateDerniereModification(f.getDateDerniereModification());
-            updatefacture.setReglements(f.getReglements());
-            updatefacture.setDetailfacture(f.getDetailfacture());
-            updatefacture.setFournisseur(f.getFournisseur());
-            service.update(updatefacture);
-        } catch (Exception err) {
-            throw new RuntimeException(err);
-        }
-        return "Facture modifié ";
-    }
+
     @RequestMapping(value = "/facturebyfournisseur/{idFournisseur}", method = RequestMethod.GET)
     public List<Facture> findFactureByFournisseur(@PathVariable(value = "idFournisseur") Long idFournisseur) {
         try {

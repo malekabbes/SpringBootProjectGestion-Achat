@@ -23,26 +23,6 @@ public class ReglementController extends ControllerGeneric<Reglement,Long> {
     private ImpServiceReglement service;
     @Autowired
     ImpServiceReglement reglementServiceImp;
-
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-    public String UpdateReglement(@RequestBody Reglement r, @PathVariable Long id) {
-        try {
-            Reglement updateReglement= service.retrieve(id);
-            if (updateReglement==null){
-                return "Reglement not found with id :";
-            }
-            updateReglement.setDate(r.getDate());
-            updateReglement.setMontantRestant(r.getMontantRestant());
-            updateReglement.setMontantPaye(r.getMontantPaye());
-            updateReglement.setFacture(r.getFacture());
-            updateReglement.setPayee(r.isPayee());
-            service.update(updateReglement);
-
-        } catch (Exception err) {
-            throw new RuntimeException(err);
-        }
-        return null;
-    }
     @GetMapping("/{idFacture}")
     public List<Reglement> retrieveReglementByFacture(@PathVariable(value = "idFacture") Long idFacture) throws Exception {
         return reglementServiceImp.retrieveReglementByFacture(idFacture);

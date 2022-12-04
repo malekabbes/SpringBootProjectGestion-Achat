@@ -28,8 +28,8 @@ public class Produit {
     private Date dateDerniereModification;
     @OneToMany(mappedBy = "produit")
     private Set<DetailFacture> detailFacture;
+    private String image;
     @ManyToOne
-    @JsonIgnore
     private Stock stock;
     @ManyToOne
     @JsonIgnore

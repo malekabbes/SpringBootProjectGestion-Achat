@@ -14,25 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class FournisseurController extends ControllerGeneric<Fournisseur,Long> {
     @Autowired
     private ImpServiceFournisseur service;
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-    public String UpdateFournisseur(@RequestBody Fournisseur f, @PathVariable Long id) {
-        try {
-            Fournisseur updatefournisseur= service.retrieve(id);
-            if (updatefournisseur==null){
-                return "Fournisseur not found with id :";
-            }
-            updatefournisseur.setCategorieFournisseur(f.getCategorieFournisseur());
-            updatefournisseur.setFacture(f.getFacture());
-            updatefournisseur.setCodeFournisseur(f.getCodeFournisseur());
-            updatefournisseur.setDetailFournisseur(f.getDetailFournisseur());
-            updatefournisseur.setLibelleFournisseur(f.getLibelleFournisseur());
-            updatefournisseur.setSecteurActivite(f.getSecteurActivite());
-            service.update(updatefournisseur);
 
-        } catch (Exception err) {
-            throw new RuntimeException(err);
-        }
-        return "Fournisseur modifié ";
-    }
 
 }

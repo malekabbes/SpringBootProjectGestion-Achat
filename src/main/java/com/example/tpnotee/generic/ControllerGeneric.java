@@ -1,5 +1,6 @@
 package com.example.tpnotee.generic;
 
+import com.example.tpnotee.entities.Produit;
 import com.example.tpnotee.entities.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,10 @@ public class ControllerGeneric<T,ID> {
             throw new RuntimeException(e);
         }
 
+    }
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public T updateProduit(@RequestBody T t) throws Exception {
+        return serviceG.update(t);
     }
 
 

@@ -15,23 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class OperateurController extends ControllerGeneric<Operateur,Long> {
     @Autowired
     private ImpServiceOperateur service;
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-    public String UpdateOperateur(@RequestBody Operateur o, @PathVariable Long id) {
-        try {
-            Operateur updateoperateur= service.retrieve(id);
-            if (updateoperateur==null){
-                return "Operateur not found with id :";
-            }
-            updateoperateur.setFacture(o.getFacture());
-            updateoperateur.setNom(o.getNom());
-            updateoperateur.setPrenom(o.getPrenom());
-            updateoperateur.setPassword(o.getPassword());
-            service.update(updateoperateur);
 
-        } catch (Exception err) {
-            throw new RuntimeException(err);
-        }
-        return "Operateur modifié ";
-    }
 
 }
