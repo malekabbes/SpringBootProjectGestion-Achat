@@ -25,6 +25,6 @@ public class Reglement
     private Date Date;
 
     @ManyToOne(cascade =CascadeType.PERSIST)
-    @JsonIgnore
+
     private Facture facture;
 }

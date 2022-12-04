@@ -13,4 +13,5 @@ public interface InterfaceReglement extends Igeneric<Reglement,Long> {
     public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) throws Exception;
 
     float pourcentageRecouvrement(Date startDate, Date endDate) throws Exception;
+
 }

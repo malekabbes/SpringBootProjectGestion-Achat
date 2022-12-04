@@ -1,5 +1,6 @@
 package com.example.tpnotee.services.Reglement;
 
+import com.example.tpnotee.Repositories.FactureRepository;
 import com.example.tpnotee.Repositories.ReglementRepository;
 import com.example.tpnotee.entities.Facture;
 import com.example.tpnotee.entities.Reglement;
@@ -20,6 +21,8 @@ import java.util.Set;
 public class ImpServiceReglement extends ImplementationGeneric<Reglement,Long> implements InterfaceReglement {
     @Autowired
     ReglementRepository repo;
+    @Autowired
+    FactureRepository frepo;
     @Autowired
     ImpServiceFacture factureServiceImp;
 
@@ -84,6 +87,9 @@ public class ImpServiceReglement extends ImplementationGeneric<Reglement,Long> i
         percentage = (totalReg / totalFac) * 100;
         return percentage;
     }
+
+
+
 }
 
 

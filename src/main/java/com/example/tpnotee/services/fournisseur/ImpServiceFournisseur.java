@@ -8,10 +8,11 @@ import com.example.tpnotee.generic.GenericRepo;
 import com.example.tpnotee.generic.ImplementationGeneric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Collections;
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @Service
 public class ImpServiceFournisseur extends ImplementationGeneric<Fournisseur,Long> implements InterfaceFournisseur {
     @Autowired

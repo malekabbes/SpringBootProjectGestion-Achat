@@ -28,6 +28,7 @@ public class Facture
     private Date dateDerniereModification;
     private boolean archivee;
     @OneToMany(mappedBy = "facture")
+    @JsonIgnore
     private Set<Reglement> reglements;
     @OneToMany(mappedBy = "facture")
     private Set<DetailFacture> detailfacture;

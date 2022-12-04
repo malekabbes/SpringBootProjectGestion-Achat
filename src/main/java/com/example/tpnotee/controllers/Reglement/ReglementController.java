@@ -8,6 +8,7 @@ import com.example.tpnotee.generic.ControllerGeneric;
 import com.example.tpnotee.services.Reglement.ImpServiceReglement;
 import com.example.tpnotee.services.fournisseur.ImpServiceFournisseur;
 import com.example.tpnotee.services.stock.ImpServiceStock;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,6 +67,10 @@ public class ReglementController extends ControllerGeneric<Reglement,Long> {
         Date ed = java.sql.Date.valueOf(DateFin);
         return reglementServiceImp.pourcentageRecouvrement(sd, ed);
     }
+
+
+
+
 
 
 }

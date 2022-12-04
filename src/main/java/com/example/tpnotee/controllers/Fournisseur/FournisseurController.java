@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/fournisseur")
-public class FournisseurController extends ControllerGeneric<Operateur,Long> {
+public class FournisseurController extends ControllerGeneric<Fournisseur,Long> {
     @Autowired
     private ImpServiceFournisseur service;
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
