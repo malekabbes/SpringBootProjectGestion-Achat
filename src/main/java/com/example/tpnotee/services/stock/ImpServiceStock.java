@@ -19,9 +19,9 @@ public class ImpServiceStock implements InterfaceStock {
     @Autowired
     StockRepository repo;
     @Autowired
-    GenericRepo<Produit,Long> prodrepo;
+    GenericRepo<Produit, Long> prodrepo;
 
-    public boolean produitexists=false;
+    public boolean produitexists = false;
 
 
     @Override
@@ -29,7 +29,7 @@ public class ImpServiceStock implements InterfaceStock {
         try {
             return (List<Stock>) repo.findAll();
         } catch (Exception err) {
-            System.out.println("Un erreur survenue : "+err);
+            System.out.println("Un erreur survenue : " + err);
         }
         return null;
     }
@@ -48,18 +48,18 @@ public class ImpServiceStock implements InterfaceStock {
         try {
             return repo.save(s);
         } catch (Exception err1) {
-            System.out.println("Une erreur survenue"+err1);
+            System.out.println("Une erreur survenue" + err1);
         }
         return s;
     }
 
     @Override
     public Stock retrieveStock(Long id) {
-        Stock res=repo.findById(id).orElse(null);
+        Stock res = repo.findById(id).orElse(null);
         try {
             return res;
         } catch (Exception err) {
-            System.out.println("Un erreur survenue"+ err);
+            System.out.println("Un erreur survenue" + err);
         }
         return null;
     }
@@ -74,17 +74,16 @@ public class ImpServiceStock implements InterfaceStock {
     }
 
 
-
     @Override
     public void assignProduitToStock(Long idProduit, Long idStock) {
         Produit produit = prodrepo.findById(idProduit).orElse(null);
         Stock stock = repo.findById(idStock).orElse(null);
         if (produit != null && stock != null) {
-            if (!repo.findStockByProduits(idProduit).equals(produit)){
+            if (!repo.findStockByProduits(idProduit).equals(produit)) {
                 stock.setProduits(Collections.singleton(produit));
                 repo.save(stock);
-            }else{
-                produitexists=true;
+            } else {
+                produitexists = true;
             }
 
         } else {
@@ -102,12 +101,12 @@ public class ImpServiceStock implements InterfaceStock {
 // * * * * * *
     @Scheduled(cron = "0 0 22 * * *", zone = "UTC+1")
     public void retrieveStatusStock() throws Exception {
-        List<Stock> list=repo.findAll();
-        List<String> liststockexpire=new ArrayList<>();
-        String Stockdata = "" ;
+        List<Stock> list = repo.findAll();
+        List<String> liststockexpire = new ArrayList<>();
+        String Stockdata = "";
         String stocktoreview = "";
 
-        for (Stock s:list) {
+        for (Stock s : list) {
             Stockdata = "\n Stock [ " + "\n"
                     + " idStock :" + s.getIdStock() +
                     " \n" +
@@ -127,6 +126,26 @@ public class ImpServiceStock implements InterfaceStock {
             }
         }
         Thread.sleep(2000);
+        System.out.println(stocktoreview);
+    }
+
+// AVEC JPQL
+@Override
+@Scheduled(cron = "0 0 22 * * *", zone = "UTC+1")
+    public void retrieveStatusStockJPQL() throws Exception {
+        List<Stock> list = repo.findstockbyqt();
+        String Stockdata = "";
+        String stocktoreview = "";
+        for (Stock s : list) {
+            Stockdata = "\n Stock [ " + "\n"
+                    + " idStock :" + s.getIdStock() +
+                    " \n" +
+                    " libelleStock : " + s.getLibelleStock() +
+                    " \n" + " qte : " + s.getQte() + " " +
+                    " \n qteMin " + s.getQteMin() + " \n] ";
+            stocktoreview = stocktoreview.concat("List de Stock expirés" + Stockdata.toString());
+
+        }
         System.out.println(stocktoreview);
     }
 }

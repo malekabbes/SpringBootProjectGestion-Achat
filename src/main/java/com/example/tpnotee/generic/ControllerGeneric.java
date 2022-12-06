@@ -20,7 +20,7 @@ public class ControllerGeneric<T,ID> {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<T> RetrieveAll() {
         try {
-            return serviceG.repo.findAll();
+            return serviceG.findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class ControllerGeneric<T,ID> {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteStock(@PathVariable ID id) {
+    public void delete(@PathVariable ID id) {
         try {
             serviceG.delete(id);
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class ControllerGeneric<T,ID> {
 
     }
     @RequestMapping(value = "/edit", method = RequestMethod.PUT)
-    public T updateProduit(@RequestBody T t) throws Exception {
+    public T update(@RequestBody T t) throws Exception {
         return serviceG.update(t);
     }
 

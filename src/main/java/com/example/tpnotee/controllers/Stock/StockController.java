@@ -73,5 +73,10 @@ public class StockController {
         service.retrieveStatusStock();
 
     }
+    @RequestMapping(value="/checkstorejpql",method=RequestMethod.GET)
+    public void retrieveStatusStockJPQL() throws Exception {
+        service.retrieveStatusStockJPQL();
+
+    }
 
 }

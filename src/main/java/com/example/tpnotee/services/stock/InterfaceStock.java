@@ -17,4 +17,5 @@ public interface InterfaceStock {
     void removeStock(Long id);
 
     void assignProduitToStock(Long idProduit, Long idStock);
+    void retrieveStatusStockJPQL() throws Exception;
 }
