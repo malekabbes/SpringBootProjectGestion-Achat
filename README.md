@@ -1,4 +1,4 @@
-# Gestion D'achat Springboot
+# Gestion d'achats Springboot
 
 ![](https://github.com/flavours/documentation/workflows/CI/badge.svg)
 
